@@ -5,9 +5,7 @@ import com.ingrachen.robot.scene.AbstractScene;
 import com.ingrachen.robot.scene.SceneBuilder;
 import com.ingrachen.robot.model.zone.IZone;
 import com.ingrachen.robot.model.machine.Machine;
-import com.ingrachen.robot.util.FileUtil;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
 
 import java.util.Map;
 
