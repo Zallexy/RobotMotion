@@ -12,9 +12,7 @@ import org.springframework.context.annotation.Import;
 import java.util.Map;
 
 @SpringBootApplication
-@Import(FileUtil.class)
 public class RobotApplication {
-
 
     public static void main(String[] args){
         /* can create any zone of any Shape type */
