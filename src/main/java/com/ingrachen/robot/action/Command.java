@@ -3,6 +3,9 @@ package com.ingrachen.robot.action;
 import java.util.Arrays;
 import java.util.StringJoiner;
 
+/**
+ * @author Hacene Ingrachen
+ */
 public enum Command {
     A('A'),
     G('G'),
@@ -16,8 +19,8 @@ public enum Command {
 
     /**
      * Converts char to Command
-     * @param name
-     * @return cmd
+     * @param name char name of the command
+     * @return cmd the Command
      */
     public static Command getCommandForName(final char name) {
         return Arrays.stream(Command.values()).filter(c -> c.name == name).findAny().orElse(null);

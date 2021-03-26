@@ -1,5 +1,8 @@
 package com.ingrachen.robot.exception;
 
+/**
+ * @author Hacene Ingrachen
+ */
 public class OutOfBoundsException extends Exception {
 
     public OutOfBoundsException(String line){

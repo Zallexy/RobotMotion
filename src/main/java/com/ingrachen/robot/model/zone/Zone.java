@@ -7,11 +7,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
+ * @author Hacene Ingrachen
  * this class, can be used to create un any shape of zones for the machines
  */
 public abstract class Zone implements IZone {
 
-    Map<Machine,String> machines;
+    private Map<Machine,String> machines;
 
     public Zone(){
         machines = new LinkedHashMap<>();

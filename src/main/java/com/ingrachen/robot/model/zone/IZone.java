@@ -4,6 +4,9 @@ import com.ingrachen.robot.model.machine.Machine;
 
 import java.util.Map;
 
+/**
+ * @author Hacene Ingrachen
+ */
 public interface IZone {
 
     void addMachine(Machine machine, String commandSequence);
