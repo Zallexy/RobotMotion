@@ -3,6 +3,10 @@ package com.ingrachen.robot.model.position;
 import java.util.Arrays;
 import java.util.StringJoiner;
 
+/**
+ *  @author Hacene Ingrachen
+ *
+ */
 public enum Direction {
     N('N'), W('W'), E('E'), S('S');
 
@@ -14,8 +18,8 @@ public enum Direction {
 
     /**
      * Converts char to Direction
-     * @param name
-     * @return cmd
+     * @param name character direction
+     * @return Direction
      */
     public static Direction getDirectionForName(final char name) {
         return Arrays.stream(Direction.values()).filter(d -> d.name == name).findAny().orElse(null);

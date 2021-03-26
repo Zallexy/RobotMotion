@@ -23,9 +23,7 @@ public class RobotApplication {
             machines.forEach((k, v) -> v.chars().mapToObj(i -> (char) i).forEach(c -> k.move(Command.getCommandForName(c))));
             // print final state(position and direction) of the machines
             machines.keySet().iterator().forEachRemaining(System.out::println);
+            //machines.keySet().forEach(System.out::println);
         }
     }
-
-
-
 }

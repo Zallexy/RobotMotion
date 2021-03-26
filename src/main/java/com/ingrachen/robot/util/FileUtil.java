@@ -10,6 +10,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -20,7 +22,8 @@ import java.util.stream.Stream;
 public class FileUtil {
     /**
      *
-     * @param pathToFile
+     * @param pathToFile the data file path
+     * @param allowedExtension the allowed extension
      * @return list of the lines in the file
      */
     public static  List<String> readSceneFile(String pathToFile, String allowedExtension) throws FileNotValidException {
@@ -38,13 +41,28 @@ public class FileUtil {
         return lines;
     }
 
+    /*BiFunction<File, String, Boolean> isValid = (file, allowed) -> {
+        String filename = file.getName();
+        Optional<String> ext = Optional.ofNullable(filename)
+                .filter(f -> f.contains("."))
+                .map(f -> f.substring(filename.lastIndexOf(".") + 1));
+        return allowed.equals(ext.get());
+    };*/
 
+
+    /**
+     * @param file File object
+     * @param allowedExtension the allowed extension
+     * @return boolean value
+     */
     public  static boolean isValid(File file, String allowedExtension){
         String filename = file.getName();
         Optional<String> ext = Optional.ofNullable(filename)
                 .filter(f -> f.contains("."))
                 .map(f -> f.substring(filename.lastIndexOf(".") + 1));
-        return allowedExtension.equals(ext.get());
+        return ext.isPresent() && allowedExtension.equals(ext.get());
     }
+
+
 
 }

@@ -5,6 +5,8 @@ import com.ingrachen.robot.model.bound.ZoneBound;
 import com.ingrachen.robot.model.position.Position;
 
 /**
+ *  @author Hacene Ingrachen
+ *
  * This abstract class be used to create machine child classes like Vaccuum, CleanerRobot, SnowRemover, etc.
  */
 public abstract class Machine implements Motion {
@@ -35,16 +37,35 @@ public abstract class Machine implements Motion {
         this.bounds = bounds;
     }
 
+    /**
+     * @param initialPosition the initial position of the machine
+     * @return boolean value
+     */
     abstract boolean validEastCoordinate(boolean initialPosition);
 
+    /**
+     * @param initialPosition the initial position of the machine
+     * @return boolean value
+     */
     abstract boolean validWestCoordinate(boolean initialPosition);
 
+    /**
+     * @param initialPosition the initial position of the machine
+     * @return boolean value
+     */
     abstract boolean validNorthCoordinate(boolean initialPosition);
 
+    /**
+     * @param initialPosition the initial position of the machine
+     * @return boolean value
+     */
     abstract boolean validSouthCoordinate(boolean initialPosition);
 
-    /*  checks if initial position of machine is inside the fixed bounds
+    /**
+     *  Checks if initial position of machine is inside the fixed bounds
      *  checks if future position to move to is valid (not out of the defined bounds)
+     * @param initialPosition the initial position of the machine
+     * @return boolean value
      */
     public boolean isPositionInsideBounds(boolean initialPosition){
         return validEastCoordinate(initialPosition) && validWestCoordinate(initialPosition) && validNorthCoordinate(initialPosition) && validSouthCoordinate(initialPosition);
