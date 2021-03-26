@@ -1,5 +1,8 @@
 package com.ingrachen.robot.model.position;
 
+/**
+ * @author Hacene Ingrachen
+ */
 public class Position {
 
     private int x, y;
@@ -37,6 +40,10 @@ public class Position {
         this.dir = dir;
     }
 
+    /**
+     * Moves the position in a given direction
+     * @param dir {@link Direction}
+     */
     public void progress(Direction dir){
         switch(dir){
             case N:

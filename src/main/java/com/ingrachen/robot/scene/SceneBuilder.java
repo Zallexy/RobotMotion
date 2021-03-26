@@ -15,30 +15,39 @@ import com.ingrachen.robot.model.position.Position;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author Hacene Ingrachen
+ */
 public class SceneBuilder extends AbstractScene {
 
     /* Any number of digits followed by whitespace followed by any number of digits*/
-    public static final String ZONE_REGEX = "^\\d+[ ]\\d+$";
+    private static final String ZONE_REGEX = "^\\d+[ ]\\d+$";
     /* Any number of digits followed by whitespace followed by any number of digits followed by whitespace followed by One direction character */
-    public static final String POSITION_REGEX = "^\\d+[ ]\\d+[ ]" + Direction.regularExpression() + "$";
+    private static final String POSITION_REGEX = "^\\d+[ ]\\d+[ ]" + Direction.regularExpression() + "$";
     /* Any number of command characters */
-    public static final String COMMAND_SEQUENCE_REGEX = Command.regularExpression() + "+";
+    private static final String COMMAND_SEQUENCE_REGEX = Command.regularExpression() + "+";
 
-    public static final String ALLOWED_EXTENSION = "txt";
+    private static final String ALLOWED_EXTENSION = "txt";
 
-    public static final String PATH_TO_FILE = "src/main/resources/init_file/scene_builder_file.txt";
+    private static final String PATH_TO_FILE = "src/main/resources/init_file/scene_builder_file.txt";
 
 
     public SceneBuilder(){
         super(PATH_TO_FILE, ALLOWED_EXTENSION, POSITION_REGEX, COMMAND_SEQUENCE_REGEX);
     }
 
+    public SceneBuilder(String pathToFile, String allowedException, String positionRegex, String commandSeqRegex){
+        super(pathToFile, allowedException, positionRegex, commandSeqRegex);
+    }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public IZone initZone(String line) throws LineReadingException{
         Pattern pattern = Pattern.compile(ZONE_REGEX);
         Matcher matcher = pattern.matcher(line);
-        IZone zone;
+        RectangleZone zone;
         if(matcher.matches()){
             String[] part = line.split(" ");
             /* Scalability : this method can be used to create and return any zone shape
@@ -49,13 +58,16 @@ public class SceneBuilder extends AbstractScene {
              // set zone size from coordinates (add 1 because coordinate axes start at 0)
             zone = new RectangleZone(Integer.parseInt(part[0]) + 1,Integer.parseInt(part[1]) + 1);
             /* Set the bounds dimensions same as zone dimensions */
-            setBounds(new RectangleZoneBound((RectangleZone) zone));
+            setBounds(new RectangleZoneBound(zone));
         } else {
             throw new LineReadingException(line);
         }
         return zone;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Machine buildMachine(String positionLine, ZoneBound bounds) throws LineReadingException, OutOfBoundsException {
         Position pos = getPosition(positionLine);

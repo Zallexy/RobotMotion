@@ -1,6 +1,7 @@
 package com.ingrachen.robot.model.zone;
 
 /**
+ * @author Hacene Ingrachen
  * Concrete zone of rectangular shape
  */
 public class RectangleZone extends Zone {

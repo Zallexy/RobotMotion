@@ -5,9 +5,7 @@ import com.ingrachen.robot.scene.AbstractScene;
 import com.ingrachen.robot.scene.SceneBuilder;
 import com.ingrachen.robot.model.zone.IZone;
 import com.ingrachen.robot.model.machine.Machine;
-import com.ingrachen.robot.util.FileUtil;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
 
 import java.util.Map;
 
@@ -25,9 +23,7 @@ public class RobotApplication {
             machines.forEach((k, v) -> v.chars().mapToObj(i -> (char) i).forEach(c -> k.move(Command.getCommandForName(c))));
             // print final state(position and direction) of the machines
             machines.keySet().iterator().forEachRemaining(System.out::println);
+            //machines.keySet().forEach(System.out::println);
         }
     }
-
-
-
 }
